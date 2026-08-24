@@ -73,7 +73,7 @@ jobs:
           MILESTONES: ${{ steps.parse-template.outputs.milestones }}
           PROJECTS: ${{ steps.parse-template.outputs.projects }}
         run: 'gh issue create
-          --repo "github.com/hackforla/ops"
+          --repo "github.com/hackforla/devops"
           --title "$TITLE"
           --body "$BODY"
           --label "$LABELS"
