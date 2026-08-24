@@ -1,0 +1,29 @@
+name: Keepalive
+
+on:
+  schedule:
+    - cron: "30 03 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  keepalive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Daniel Ridge repo
+        uses: actions/checkout@v4
+
+      - name: Commit if the repo has been idle for more than 50 days
+        run: |
+          age=$(( ( $(date +%s) - $(git log -1 --format=%ct) ) / 86400 ))
+          echo "Last commit was $age day(s) ago."
+          if [ "$age" -lt 50 ]; then
+            echo "Under 50 days; nothing to do."
+            exit 0
+          fi
+          git config user.name 'Daniel Ridge'
+          git config user.email 'Daniel.Ridge@hackforla.org'
+          git commit --allow-empty -m "Keepalive: prevent GitHub disabling scheduled workflows"
+          git push

@@ -8,13 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out Daniel Ridge repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Create issue with sample labels
         run: 'gh issue create
-          --repo github.com/danielridgebot/check-ghpages-versions
+          --repo github.com/hackforla/check-ghpages-versions
           --title "This issue has been created to test out sample labels"
           --body "Have the labels been created successfully? Are they properly formatted?"
           --label "feature: maintenance,size: missing,role: Site Reliability Engineer,size: 0.5pt"'
         env:
-          GH_TOKEN: ${{ secrets.Daniel_Ridge_PAT }}
+          GH_TOKEN: ${{ secrets.DR_PAT }}
