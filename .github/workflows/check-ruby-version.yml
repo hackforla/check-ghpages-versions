@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out Daniel Ridge repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set ENV variable for current Ruby version number
         run: echo "RUBY_CURRENT_VERSION=$(cat release-versions/ruby.txt)" >> $GITHUB_ENV
