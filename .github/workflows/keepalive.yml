@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out Daniel Ridge repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Commit if the repo has been idle for more than 50 days
         run: |
